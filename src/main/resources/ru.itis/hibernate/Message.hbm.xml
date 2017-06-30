@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ru.itis.models.Message" table="message" catalog="public">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+
+        <property name="text" column="text"/>
+        <property name="chat" column="chat_id"/>
+        <property name="author" column="author_id"/>
+
+        <many-to-one name="chat" class="ru.itis.models.Chat" fetch="join">
+            <column name="chat_id" not-null="true"/>
+        </many-to-one>
+
+    </class>
+</hibernate-mapping>
